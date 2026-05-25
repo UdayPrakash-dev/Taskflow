@@ -194,7 +194,7 @@ taskflow/
 |---|---|
 | Backend/API | Render.com |
 | Database | MongoDB Atlas |
-| Frontend | Netlify / Vercel / GitHub Pages |
+| Frontend | Netlify |
 
 ---
 
