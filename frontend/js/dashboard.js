@@ -24,7 +24,7 @@ function setupDashboard() {
     const userNameDisplay = document.getElementById('user-name-display');
     
     // We fetch '/auth/me' to verify token is valid and get fresh user data
-    apiCall('/auth/me', 'GET')
+    apiCall('/api/auth/me', 'GET')
         .then(user => {
             userNameDisplay.textContent = `Hello, ${user.name}`;
             localStorage.setItem('userName', user.name); // update cache
@@ -42,7 +42,7 @@ async function fetchAndRenderTasks() {
     const container = document.getElementById('tasks-container');
     
     try {
-        const tasks = await apiCall('/tasks', 'GET');
+        const tasks = await apiCall('/api/tasks', 'GET');
         
         container.innerHTML = ''; // Clear loading text
         
@@ -92,7 +92,7 @@ async function createTask() {
 
     try {
         // Send POST request
-        await apiCall('/tasks', 'POST', {
+        await apiCall('/api/tasks', 'POST', {
             title: titleInput.value,
             description: descInput.value
         });
@@ -125,7 +125,7 @@ async function toggleTaskStatus(taskId, isCompleted) {
         }
 
         // Send PUT request to backend
-        await apiCall(`/tasks/${taskId}`, 'PUT', {
+        await apiCall(`/api/tasks/${taskId}`, 'PUT', {
             completed: isCompleted
         });
         
@@ -144,7 +144,7 @@ async function deleteTask(taskId) {
     if (!confirm('Are you sure you want to delete this task?')) return;
 
     try {
-        await apiCall(`/tasks/${taskId}`, 'DELETE');
+        await apiCall(`/api/tasks/${taskId}`, 'DELETE');
         
         // Optimistically remove from UI without needing a full re-fetch
         const taskElement = document.querySelector(`.task-item[data-id="${taskId}"]`);

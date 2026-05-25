@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Call API using the wrapper
-                const data = await apiCall('/auth/login', 'POST', { email, password });
+                const data = await apiCall('/api/auth/login', 'POST', { email, password });
                 
                 // Store token and routing
                 localStorage.setItem('token', data.token);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Call API using the wrapper
-                const data = await apiCall('/auth/register', 'POST', { name, email, password });
+                const data = await apiCall('/api/auth/register', 'POST', { name, email, password });
                 
                 // Store token and redirect
                 localStorage.setItem('token', data.token);
