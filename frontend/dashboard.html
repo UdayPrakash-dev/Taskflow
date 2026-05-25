@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">TaskFlow</div>
+            <div class="user-menu">
+                <span id="user-name-display">Loading...</span>
+                <button id="logout-btn" class="btn btn-sm btn-outline">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container dashboard-container">
+        <section class="create-task-section card">
+            <h3>Add New Task</h3>
+            <div id="task-error" class="alert alert-error hidden"></div>
+            <form id="create-task-form">
+                <div class="form-group">
+                    <input type="text" id="task-title" required placeholder="What needs to be done?">
+                </div>
+                <div class="form-group">
+                    <textarea id="task-desc" rows="2" placeholder="Description (optional)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="task-submit-btn">
+                    <span class="btn-text">Add Task</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+        </section>
+
+        <section class="task-list-section">
+            <div class="task-header">
+                <h2>Your Tasks</h2>
+                <div class="filter-controls">
+                    </div>
+            </div>
+            
+            <div id="tasks-container">
+                <div class="text-center" style="padding: 2rem;">Loading tasks...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Protect this route immediately
+        requireAuth();
+    </script>
+</body>
+</html>
