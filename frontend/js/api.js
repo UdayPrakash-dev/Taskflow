@@ -12,7 +12,7 @@ const API_BASE_URL = 'https://taskflow-u592.onrender.com';
  * @param {object|null} body - JS object to be stringified (optional)
  * @returns {Promise<object>} - Parsed JSON response
  */
-async function apiCall(endpoint, method = 'GET', body = null) {
+window.apiCall = async function(endpoint, method = 'GET', body = null) {
     // 1. Setup default headers
     const headers = {
         'Content-Type': 'application/json'
